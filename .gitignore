@@ -1,0 +1,7 @@
+.terraform/
+.terraform/
+*.zip
+*.tar.gz
+*.bin
+*.exe
+*.iso

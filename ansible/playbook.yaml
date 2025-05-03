@@ -1,0 +1,26 @@
+- name: Setup Apache and deploy HTML page
+  hosts: web
+  become: true
+  tasks: 
+
+    - name: Wait for yum lock to be released
+      wait_for:
+        path: /var/run/yum.pid
+        state: absent
+        timeout: 300
+    - name: Install Apache
+      yum:
+        name: httpd
+        state: present
+        lock_timeout: 180
+
+    - name: Enable and start Apache
+      service:
+        name: httpd
+        state: started
+        enabled: true
+
+    - name: Copy index.html to server
+      copy:
+        src: files/index.html
+        dest: /var/www/html/index.html

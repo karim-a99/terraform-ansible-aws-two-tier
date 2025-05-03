@@ -1,6 +1,6 @@
 provider "vault" {
   address = "http://127.0.0.1:8200"
-  token   = "hvs.t894QhDvdnVtV48VPubR57xp"
+  token   = ""
 
 }
 data "vault_kv_secret_v2" "aws" {
